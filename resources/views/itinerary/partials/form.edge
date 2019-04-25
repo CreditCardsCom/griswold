@@ -1,0 +1,29 @@
+{{--
+  AdonisJs provides CSRF Protection by default.
+  This mean that we need to send a csrf token for every POST, PUT or DELETE request.
+
+  ref: http://adonisjs.com/docs/4.0/csrf
+  --}}
+  {{ csrfField() }}
+
+  {{-- Hotel Field --}}
+  <div class="mb-8">
+    @!component('components.label', { text: 'Hotel', related: 'hotle' })
+    @!component('components.input', { name: 'hotel', value: old('hotel', itinerary.hotel || ''), required: false })
+    <div>
+      {{ elIf('<small class="text-xs">$self</small>', getErrorFor('hotel'), hasErrorFor('hotel')) }}
+    </div>
+  </div>
+
+  {{-- Flight Number Field --}}
+  <div class="mb-8">
+    @!component('components.label', { text: 'Flight Number', related: 'flight_number' })
+    @!component('components.input', { name: 'flight_number', value: old('flight_number', itinerary.flight_number || ''), required: false })
+    <div>
+      {{ elIf('<small class="text-xs">$self</small>', getErrorFor('hotel'), hasErrorFor('hotel')) }}
+    </div>
+  </div>
+
+  <button class="bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded">
+    Save
+  </button>

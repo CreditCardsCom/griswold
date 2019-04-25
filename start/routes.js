@@ -23,3 +23,4 @@ Route.on('/')
 
 Route.resource('trips', 'TripController');
 Route.resource('offices', 'OfficeController');
+Route.resource('trips.itineraries', 'ItineraryController');

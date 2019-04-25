@@ -14,6 +14,7 @@ class TripController {
   async show({ view, params }) {
     const trip = await Trip.query()
       .with('itineraries')
+      .with('itineraries.user')
       .where('id', params.id)
       .first();
 

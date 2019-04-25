@@ -1,7 +1,12 @@
 @layout('layout.app')
 
 @section('content')
-  <table>
+
+  <h2 class="mb-2">Upcoming Trips</h2>
+
+  @!component('components.button', { url: route('ItineraryController.create', {trips_id: trip.id}), text: 'Join the Trip' })
+
+  <table class="mt-2 text-left w-full border-collapse">
     <thead>
       <tr>
         <th>Hotel</th>
@@ -11,9 +16,9 @@
     </thead>
     <tbody>
       @each(itinerary in trip.itineraries)
-      <tr>
+      <tr class="hover:bg-grey-lighter">
         <td>{{ itinerary.hotel }}</td>
-        <td>{{ itinerary.flight }}</td>
+	<td>{{ itinerary.flight_number }}</td>
         <td>{{ itinerary.user.name }}</td>
       </tr>
       @endeach
