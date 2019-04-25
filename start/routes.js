@@ -20,3 +20,5 @@ Route.get('login', 'UserController.login');
 Route.on('/')
   .render('welcome')
   .middleware(['auth']);
+
+Route.resource('offices', 'OfficeController');
