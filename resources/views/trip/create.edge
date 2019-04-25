@@ -1,4 +1,5 @@
-<form>
-  <input type="text" placeholder="Name" />
+<form action="{{ route('TripController.store') }}" method="POST">
+  {{ csrfField() }}
+  <input type="text" placeholder="Name" name="name" />
   <button type="submit">Submit</button>
 </form>

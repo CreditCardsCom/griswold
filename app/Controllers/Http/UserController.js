@@ -1,7 +1,7 @@
 const User = use('App/Models/User');
 
 class UserController {
-  async login({ auth, request, response }) {
+  async login({ auth, response }) {
     // const { email, password } = request.all();
     // await auth.attempt(email, password);
 

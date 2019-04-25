@@ -1,4 +1,5 @@
 const Trip = use('App/Models/Trip');
+const { validateAll } = use('Validator');
 
 class TripController {
   async index({ view }) {
@@ -7,7 +8,7 @@ class TripController {
     return view.render('trip.index', { trips: trips.toJSON() });
   }
 
-  async view({ view, params }) {
+  async show({ view, params }) {
     const trip = await Trip.findOrFail(params.id);
 
     return view.render('trip.view', { trip: trip.toJSON() });
@@ -15,6 +16,24 @@ class TripController {
 
   async create({ view }) {
     return view.render('trip.create');
+  }
+
+  async store({ session, request, response }) {
+    const data = request.only(['name']);
+
+    const validation = await validateAll(data, {
+      name: 'required',
+    });
+
+    if (validation.fails()) {
+      session.withErrors(validation.messages()).flashAll();
+
+      return response.redirect('back');
+    }
+
+    await Trip.create(data);
+
+    return response.redirect('/trips');
   }
 }
 

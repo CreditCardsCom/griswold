@@ -4,3 +4,7 @@
   <li> <a href="/trips/{{ trip.id }}">{{ trip.name }}</a> </li>
   @endeach
 </ul>
+
+<a href="{{ route('TripController.create') }}">
+  Create Trip
+</a>
