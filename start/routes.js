@@ -20,5 +20,13 @@ Route.get('login', 'UserController.login');
 Route.get('/', ({ response }) => response.redirect('/trips'));
 
 Route.resource('trips', 'TripController').middleware('auth');
-Route.resource('offices', 'OfficeController').middleware('auth');
 Route.resource('trips.itineraries', 'ItineraryController').middleware('auth');
+
+Route.resource('offices', 'OfficeController')
+  .middleware('auth')
+  .validator(
+    new Set([
+      [['offices.store'], ['StoreOffice']],
+      [['offices.update'], ['UpdateOffice']]
+    ])
+  );

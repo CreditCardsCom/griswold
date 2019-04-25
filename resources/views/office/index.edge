@@ -1,22 +1,31 @@
-<table>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>coordinates</th>
-      <th>created_at</th>
-      <th>updated_at</th>
-    </tr>
-  </thead>
-  <tbody>
-    @each(office in offices)
-      <tr>
-        <td>{{ office.id }}</td>
-        <td><a href="{{ route('offices.show', { id: office.id }) }}">{{ office.name }}</a></td>
-        <td>({{ office.coord.x }}, {{ office.coord.y }})</td>
-        <td>{{ office.created_at }}</td>
-        <td>{{ office.updated_at }}</td>
-      </tr>
-    @endeach
-  </tbody>
-</table>
+@layout('layout.app')
+
+@section('content')
+  @set('title', 'Offices')
+  <a href="{{ route('offices.create') }}">Create</a>
+
+  <div class="flex w-3/4 mx-auto">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>coordinates</th>
+          <th>created_at</th>
+          <th>updated_at</th>
+        </tr>
+      </thead>
+      <tbody>
+        @each(office in offices)
+          <tr>
+            <td>{{ office.id }}</td>
+            <td><a href="{{ route('offices.show', { id: office.id }) }}">{{ office.name }}</a></td>
+            <td>({{ office.coord.x }}, {{ office.coord.y }})</td>
+            <td>{{ office.created_at }}</td>
+            <td>{{ office.updated_at }}</td>
+          </tr>
+        @endeach
+      </tbody>
+    </table>
+  </div>
+@endsection

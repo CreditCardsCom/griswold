@@ -1,4 +1,5 @@
 const Office = use('App/Models/Office');
+const { validate } = use('Validator');
 
 /**
  * Resourceful controller for interacting with offices
@@ -28,7 +29,9 @@ class OfficeController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create({ request, response, view }) {}
+  async create({ view }) {
+    return view.render('office.create');
+  }
 
   /**
    * Create/save a new office.
@@ -38,7 +41,12 @@ class OfficeController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {}
+  async store({ request, response }) {
+    const params = request.only(['name', 'coord']);
+    const { id } = await Office.create(params);
+
+    return response.route('OfficeController.show', { id });
+  }
 
   /**
    * Display a single office.
@@ -50,7 +58,7 @@ class OfficeController {
    * @param {View} ctx.view
    */
   async show({ params, view }) {
-    const office = await Office.find(params.id);
+    const office = await Office.findOrFail(params.id);
 
     return view.render('office.show', { office: office.toJSON() });
   }
@@ -64,7 +72,11 @@ class OfficeController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit({ params, request, response, view }) {}
+  async edit({ params, request, response, view }) {
+    const office = await Office.findOrFail(params.id);
+
+    return view.render('office.edit', { office: office.toJSON() });
+  }
 
   /**
    * Update office details.
@@ -74,7 +86,16 @@ class OfficeController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {}
+  async update({ params, request, response }) {
+    const params = request.only(['name', 'coord'])
+    const office = await Office.findOrFail(params.id)
+
+    office.merge(params);
+
+    await office.save();
+
+    return response.route('OfficeController.index');
+  }
 
   /**
    * Delete a office with id.
@@ -84,7 +105,13 @@ class OfficeController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy({ params, request, response }) {}
+  async destroy({ params, response }) {
+    const office = await Office.findOrFail(params.id);
+
+    await office.delete();
+
+    return response.route('OfficeController.index');
+  }
 }
 
 module.exports = OfficeController;

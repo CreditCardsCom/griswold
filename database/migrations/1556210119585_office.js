@@ -5,7 +5,10 @@ class OfficesSchema extends Schema {
   up() {
     this.create('offices', table => {
       table.increments();
-      table.string('name').notNullable();
+      table
+        .string('name')
+        .notNullable()
+        .unique();
       table.specificType('coord', 'point').notNullable();
 
       table.timestamps();

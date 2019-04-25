@@ -20,13 +20,13 @@ Factory.blueprint('App/Models/User', async faker => ({
   password: await Hash.make(faker.password())
 }));
 
+Factory.blueprint('App/Models/Office', async faker => ({
+  name: faker.city(),
+  coord: `(${faker.coordinates()})`
+}));
+
 Factory.blueprint('App/Models/Trip', async faker => ({
   name: faker.word(),
   origin_office_id: 1,
   destination_office_id: 2
-}));
-
-Factory.blueprint('App/Models/Office', async faker => ({
-  name: faker.city(),
-  coord: `(${faker.coordinates()})`
 }));
