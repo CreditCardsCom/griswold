@@ -8,6 +8,7 @@
     "start": "node server.js",
     "test": "node ace test",
     "lint": "eslint app",
+    "start:dev": "nodemon $NODE_DEBUG_OPTION server.js",
     "build": "adonis bundle",
     "build:dev": "adonis bundle --watch",
     "build:prod": "adonis bundle --production"
@@ -38,7 +39,8 @@
   "devDependencies": {
     "@creditcards/eslint-config": "^1.0.0",
     "eslint": "^5.16.0",
-    "less": "^3.9.0"
+    "less": "^3.9.0",
+    "nodemon": "^1.18.11"
   },
   "autoload": {
     "App": "./app"
