@@ -21,4 +21,5 @@ Route.on('/')
   .render('welcome')
   .middleware(['auth']);
 
+Route.resource('trips', 'TripController');
 Route.resource('offices', 'OfficeController');
