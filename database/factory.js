@@ -19,3 +19,7 @@ Factory.blueprint('App/Models/User', async faker => ({
   email: faker.email(),
   password: await Hash.make(faker.password())
 }));
+
+Factory.blueprint('App/Models/Trip', async faker => ({
+  name: faker.word()
+}));

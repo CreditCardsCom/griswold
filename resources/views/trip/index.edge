@@ -1,0 +1,6 @@
+<ul>
+  @each(trip in trips)
+  @debugger
+  <li> <a href="/trips/{{ trip.id }}">{{ trip.name }}</a> </li>
+  @endeach
+</ul>
