@@ -13,7 +13,8 @@ const Factory = use('Factory');
 
 class UserSeeder {
   async run() {
-    await Factory.model('App/Models/User').create();
+    await Factory.model('App/Models/User').create({ name: 'Clark' });
+    await Factory.model('App/Models/User').createMany(3);
   }
 }
 

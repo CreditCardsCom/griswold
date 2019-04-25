@@ -2,11 +2,18 @@ const Trip = use('App/Models/Trip');
 const { validateAll } = use('Validator');
 
 class TripController {
-  async index({ view }) {
-    const trips = await Trip.query()
+  async index({ view, request }) {
+    let tripsQuery = Trip.query()
       .with('origin')
-      .with('destination')
-      .fetch();
+      .with('destination');
+
+    if (request.get().user_id) {
+      tripsQuery = tripsQuery.whereHas('itineraries', builder => {
+        builder.where('user_id', request.get().user_id);
+      });
+    }
+
+    const trips = await tripsQuery.fetch();
 
     return view.render('trip.index', { trips: trips.toJSON() });
   }

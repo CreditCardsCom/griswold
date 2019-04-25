@@ -9,8 +9,11 @@
         </g>
       </svg>
     </a>
-    <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark ml-4 mr-4" href="/my/trips">My Trips</a>
-    <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark ml-4 mr-4" href="/trips">All Trips   </a>
+    @loggedIn
+  <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark ml-4 mr-4" href="/trips?user_id={{ auth.user.id }}">My Trips</a>
+    @endloggedIn
+    <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark mr-4" href="/trips">All Trips</a>
+    <a class="block mt-4 lg:inline-block lg:mt-0 hover:text-grey-dark mr-4" href="/trips">Past Trips</a>
   </div>
 
   {{-- Hamburger --}}
