@@ -3,7 +3,9 @@
 @section('content')
   @set('title', 'Trips')
 
-  @each(trip in trips, include = 'trip.partials.trip-card')
+  <div class="flex flex-wrap">
+    @each(trip in trips, include = 'trip.partials.trip-card')
+  </div>
   @else
     @component('components.alert', { color: 'info' })
       <p class="text-sm">There's trips available!</p>
