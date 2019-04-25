@@ -3,7 +3,10 @@ const { validateAll } = use('Validator');
 
 class TripController {
   async index({ view }) {
-    const trips = await Trip.all();
+    const trips = await Trip.query()
+      .with('origin')
+      .with('destination')
+      .fetch();
 
     return view.render('trip.index', { trips: trips.toJSON() });
   }
@@ -12,11 +15,7 @@ class TripController {
     const trip = await Trip.query()
       .with('itineraries')
       .where('id', params.id)
-      .fetch();
-
-    const tripJ = trip.toJSON();
-    console.log(trip);
-    console.dir(tripJ);
+      .first();
 
     return view.render('trip.show', { trip: trip.toJSON() });
   }

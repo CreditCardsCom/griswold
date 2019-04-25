@@ -3,11 +3,11 @@ const Model = use('Model');
 
 class Trip extends Model {
   origin() {
-    return this.hasOne('App/Models/Location');
+    return this.belongsTo('App/Models/Office', 'origin_office_id');
   }
 
   destination() {
-    return this.hasOne('App/Models/Location');
+    return this.belongsTo('App/Models/Office', 'destination_office_id');
   }
 
   itineraries() {

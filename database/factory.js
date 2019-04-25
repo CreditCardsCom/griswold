@@ -21,7 +21,9 @@ Factory.blueprint('App/Models/User', async faker => ({
 }));
 
 Factory.blueprint('App/Models/Trip', async faker => ({
-  name: faker.word()
+  name: faker.word(),
+  origin_office_id: 1,
+  destination_office_id: 2
 }));
 
 Factory.blueprint('App/Models/Office', async faker => ({
