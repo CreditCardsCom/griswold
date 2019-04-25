@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node ace test"
+    "test": "node ace test",
+    "lint": "eslint app"
   },
   "keywords": [
     "adonisjs",
@@ -27,7 +28,10 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@creditcards/eslint-config": "^1.0.0",
+    "eslint": "^5.16.0"
+  },
   "autoload": {
     "App": "./app"
   }

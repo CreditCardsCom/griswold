@@ -1,0 +1,6 @@
+{
+  "extends": "@creditcards",
+  "globals": {
+    "use": true
+  }
+}
