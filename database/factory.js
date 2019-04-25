@@ -23,3 +23,8 @@ Factory.blueprint('App/Models/User', async faker => ({
 Factory.blueprint('App/Models/Trip', async faker => ({
   name: faker.word()
 }));
+
+Factory.blueprint('App/Models/Office', async faker => ({
+  name: faker.city(),
+  coord: `(${faker.coordinates()})`
+}));

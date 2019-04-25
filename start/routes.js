@@ -20,6 +20,5 @@ Route.get('login', 'UserController.login');
 Route.on('/')
   .render('welcome')
   .middleware(['auth']);
-Route.on('/').render('welcome');
 
-Route.resource('trips', 'TripController');
+Route.resource('offices', 'OfficeController');
