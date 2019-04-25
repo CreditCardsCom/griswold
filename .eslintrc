@@ -2,5 +2,8 @@
   "extends": "@creditcards",
   "globals": {
     "use": true
+  },
+  "rules": {
+    "class-methods-use-this": 0
   }
 }

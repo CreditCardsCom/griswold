@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -14,6 +12,11 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
 
-Route.on('/').render('welcome')
+Route.get('logout', 'UserController.logout');
+Route.get('login', 'UserController.login');
+
+Route.on('/')
+  .render('welcome')
+  .middleware(['auth']);
