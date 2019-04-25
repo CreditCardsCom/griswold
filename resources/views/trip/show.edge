@@ -1,0 +1,22 @@
+@layout('layout.app')
+
+@section('content')
+  <table>
+    <thead>
+      <tr>
+        <th>Hotel</th>
+        <th>Flight</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(itinerary in trip.itineraries)
+      <tr>
+        <td>{{ itinerary.hotel }}</td>
+        <td>{{ itinerary.flight }}</td>
+        <td>{{ itinerary.user.name }}</td>
+      </tr>
+      @endeach
+    </tbody>
+  </table>
+@endsection

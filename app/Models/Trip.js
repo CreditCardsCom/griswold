@@ -9,6 +9,10 @@ class Trip extends Model {
   destination() {
     return this.hasOne('App/Models/Location');
   }
+
+  itineraries() {
+    return this.hasMany('App/Models/Itinerary');
+  }
 }
 
 module.exports = Trip;

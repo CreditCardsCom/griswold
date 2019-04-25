@@ -9,9 +9,16 @@ class TripController {
   }
 
   async show({ view, params }) {
-    const trip = await Trip.findOrFail(params.id);
+    const trip = await Trip.query()
+      .with('itineraries')
+      .where('id', params.id)
+      .fetch();
 
-    return view.render('trip.view', { trip: trip.toJSON() });
+    const tripJ = trip.toJSON();
+    console.log(trip);
+    console.dir(tripJ);
+
+    return view.render('trip.show', { trip: trip.toJSON() });
   }
 
   async create({ view }) {
@@ -22,7 +29,7 @@ class TripController {
     const data = request.only(['name']);
 
     const validation = await validateAll(data, {
-      name: 'required',
+      name: 'required'
     });
 
     if (validation.fails()) {
