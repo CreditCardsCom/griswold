@@ -1,5 +1,12 @@
-<form action="{{ route('TripController.store') }}" method="POST">
-  {{ csrfField() }}
-  <input type="text" placeholder="Name" name="name" />
-  <button type="submit">Submit</button>
-</form>
+@layout('layout.app')
+
+@section('content')
+  @set('title', 'Create Trip')
+
+  <form action="{{ route('TripController.store') }}" method="POST">
+    {{ csrfField() }}
+    @!component('components.label', { text: 'Trip Name', related: 'name' })
+    @!component('components.input', { name: 'name', value: old('name', trip.name || ''), required: true })
+    <button type="submit" class="bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded">Create</button>
+  </form>
+@endsection
