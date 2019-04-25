@@ -9,6 +9,8 @@ class TripSchema extends Schema {
         .string('name', 80)
         .notNullable()
         .unique();
+      table.date('start_date').notNullable();
+      table.date('end_date').notNullable();
       table.timestamps();
     });
   }

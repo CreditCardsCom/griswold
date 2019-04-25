@@ -1,11 +1,13 @@
 const Trip = use('App/Models/Trip');
 const { validateAll } = use('Validator');
+const moment = require('moment');
 
 class TripController {
   async index({ view, request }) {
     let tripsQuery = Trip.query()
       .with('origin')
-      .with('destination');
+      .with('destination')
+      .where('end_date', '>', moment().subtract(4, 'days'));
 
     if (request.get().user_id) {
       tripsQuery = tripsQuery.whereHas('itineraries', builder => {

@@ -33,6 +33,7 @@
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.0.6",
     "adonis-bundler": "^1.0.1",
+    "moment": "^2.24.0",
     "pg": "^7.10.0",
     "tailwindcss": "^0.6.1"
   },
