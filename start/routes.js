@@ -17,10 +17,8 @@ const Route = use('Route');
 Route.get('logout', 'UserController.logout');
 Route.get('login', 'UserController.login');
 
-Route.on('/')
-  .render('welcome')
-  .middleware(['auth']);
+Route.get('/', ({ response }) => response.redirect('/trips'));
 
-Route.resource('trips', 'TripController');
-Route.resource('offices', 'OfficeController');
-Route.resource('trips.itineraries', 'ItineraryController');
+Route.resource('trips', 'TripController').middleware('auth');
+Route.resource('offices', 'OfficeController').middleware('auth');
+Route.resource('trips.itineraries', 'ItineraryController').middleware('auth');
