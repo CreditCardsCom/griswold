@@ -2,9 +2,14 @@
 
 @section('content')
 
-  <h2 class="mb-2">Upcoming Trips</h2>
 
-  @!component('components.button', { url: route('ItineraryController.create', {trips_id: trip.id}), text: 'Join the Trip' })
+
+  <div class="relative">
+    <h2 class="mb-2">Upcoming Trips</h2>
+    <div class="absolute pin-t pin-r">
+      @!component('components.button', { url: route('ItineraryController.create', {trips_id: trip.id}), text: 'Join the Trip' })
+    </div>
+</div>
 
   <table class="mt-2 text-left w-full border-collapse">
     <thead>
