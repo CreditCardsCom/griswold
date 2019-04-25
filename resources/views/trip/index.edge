@@ -1,10 +1,12 @@
-<ul>
-  @each(trip in trips)
-  @debugger
-  <li> <a href="/trips/{{ trip.id }}">{{ trip.name }}</a> </li>
-  @endeach
-</ul>
+@layout('layout.app')
 
-<a href="{{ route('TripController.create') }}">
-  Create Trip
-</a>
+@section('content')
+  @set('title', 'Trips')
+
+  @each(trip in trips, include = 'trip.partials.trip-card')
+  @else
+    @component('components.alert', { color: 'info' })
+      <p class="text-sm">There's trips available!</p>
+    @endcomponent
+  @endeach
+@endsection
