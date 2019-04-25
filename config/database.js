@@ -1,10 +1,8 @@
-'use strict'
-
 /** @type {import('@adonisjs/framework/src/Env')} */
-const Env = use('Env')
+const Env = use('Env');
 
 /** @type {import('@adonisjs/ignitor/src/Helpers')} */
-const Helpers = use('Helpers')
+const Helpers = use('Helpers');
 
 module.exports = {
   /*
@@ -32,7 +30,9 @@ module.exports = {
   sqlite: {
     client: 'sqlite3',
     connection: {
-      filename: Helpers.databasePath(`${Env.get('DB_DATABASE', 'development')}.sqlite`)
+      filename: Helpers.databasePath(
+        `${Env.get('DB_DATABASE', 'development')}.sqlite`
+      )
     },
     useNullAsDefault: true
   },
@@ -72,10 +72,10 @@ module.exports = {
     client: 'pg',
     connection: {
       host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get('DB_PORT', ''),
+      port: Env.get('DB_PORT', '5432'),
       user: Env.get('DB_USER', 'root'),
       password: Env.get('DB_PASSWORD', ''),
       database: Env.get('DB_DATABASE', 'adonis')
     }
   }
-}
+};
