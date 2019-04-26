@@ -25,7 +25,7 @@ class TripController {
       .with('itineraries')
       .with('itineraries.user')
       .where('id', params.id)
-      .first();
+      .firstOrFail();
 
     return view.render('trip.show', { trip: trip.toJSON() });
   }

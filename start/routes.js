@@ -14,6 +14,8 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
+Route.get('/404', 'ExceptionController.notFound');
+
 Route.get('logout', 'UserController.logout');
 Route.get('login', 'UserController.login');
 
