@@ -1,5 +1,12 @@
 # Adonis fullstack application
 
+## Todo
+
+- [ ] Add filtering to trips (would be cool to filter by office for example)
+- [ ] Integrate requests for travel into the app
+- [ ] Invite codes
+- [ ] Sharing
+
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 
 1. Bodyparser
